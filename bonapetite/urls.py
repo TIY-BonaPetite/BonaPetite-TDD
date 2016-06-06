@@ -1,10 +1,11 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from bpmodels import views
+from bpmodels.views import ElectricalConductivityViewSet, TemperatureViewSet
 
 router = routers.DefaultRouter()
-router.register(r'^data/', views.ModelViewSet)
+router.register(r'^data/ec/', ElectricalConductivityViewSet)
+router.register(r'^data/temp/', TemperatureViewSet)
 
 urlpatterns = [
     url(r'^', include('bpmodels.urls')),
