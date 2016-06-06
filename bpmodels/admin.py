@@ -10,7 +10,5 @@ class TemperatureAdmin(admin.ModelAdmin):
     readonly_fields = ('time_collected', )
 
 
-admin.site.register(ElectricalConductivity,
-                    Temperature,
-                    ElectricalConductivityAdmin,
-                    TemperatureAdmin)
+admin.site.register(ElectricalConductivity, ElectricalConductivityAdmin)
+admin.site.register(Temperature, TemperatureAdmin)
