@@ -4,7 +4,7 @@ from rest_framework import routers
 from bpmodels import views
 
 router = routers.DefaultRouter()
-router.register(r'^data/', views.CollectionsViewSet)
+router.register(r'^data/', views.ModelViewSet)
 
 urlpatterns = [
     url(r'^', include('bpmodels.urls')),
