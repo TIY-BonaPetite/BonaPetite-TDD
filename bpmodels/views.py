@@ -3,7 +3,7 @@ from itertools import chain
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import DataSerializer
+from .serializers import ElectricalConductivitySerializer, TemperatureSerializer
 from .models import ElectricalConductivity, Temperature
 
 
@@ -30,30 +30,30 @@ def sensor_data(request):
 #     return render(request, 'plantinfo.html', context)
 
 
-class DataViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows data to be viewed or edited.
-    """
-    queryset = list(chain(
-            ElectricalConductivity.objects.all().order_by('-time_collected'),
-            Temperature.objects.all().order_by('-time_collected')))
-    serializer_class = DataSerializer(queryset, many=True)
+# class DataViewSet(viewsets.ModelViewSet):
+#     """
+#     API endpoint that allows data to be viewed or edited.
+#     """
+#     queryset = list(chain(
+#             ElectricalConductivity.objects.all().order_by('-time_collected'),
+#             Temperature.objects.all().order_by('-time_collected')))
+#     serializer_class = DataSerializer(queryset, many=True)
 
 
-# class ElectricalConductivityViewSet(viewsets.ModelViewSet):
-#     """
-#     API endpoint that allows conductivity data to be viewed or edited.
-#     """
-#     queryset = ElectricalConductivity.objects.all().order_by('-pH_level')
-#     serializer_class = ElectricalConductivitySerializer
-#
-#
-# class TemperatureViewSet(viewsets.ModelViewSet):
-#     """
-#     API endpoint that allows temperature data to be viewed or edited.
-#     """
-#     queryset = Temperature.objects.all().order_by('-pH_level')
-#     serializer_class = TemperatureSerializer
+class ElectricalConductivityViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows conductivity data to be viewed or edited.
+    """
+    queryset = ElectricalConductivity.objects.all().order_by('-pH_level')
+    serializer_class = ElectricalConductivitySerializer
+
+
+class TemperatureViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows temperature data to be viewed or edited.
+    """
+    queryset = Temperature.objects.all().order_by('-pH_level')
+    serializer_class = TemperatureSerializer
 
 
 def data_csv(request):
