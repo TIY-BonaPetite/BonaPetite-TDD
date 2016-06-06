@@ -30,7 +30,7 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':
-        ('rest_framework.permissions.IsOwnerOrReadOnly', ),
+        ('rest_framework.permissions.IsAutheticated', ),
     'PAGE_SIZE': 10
 }
 
