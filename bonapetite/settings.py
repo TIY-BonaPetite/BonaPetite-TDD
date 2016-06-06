@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bpmodels.apps.BpmodelsConfig',
     'rest_framework',
+    'registration',
 ]
 
 REST_FRAMEWORK = {
